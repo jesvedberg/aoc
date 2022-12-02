@@ -36,7 +36,7 @@ proc getResult2(game: string): int =
     of 'Z':
       return (6 + getMove(convert[wins[game[0]]]))
     else:
-      quit(fmt"Bad input: {game}")
+      quit fmt"Bad input: {game}"
 
 var
   i = 0
