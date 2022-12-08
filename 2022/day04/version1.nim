@@ -1,4 +1,4 @@
-import std/[enumerate, strutils, sequtils]
+import std/[strutils, sequtils]
 
 proc isContained(limits: seq[int]): bool =
   result = false
@@ -23,7 +23,7 @@ var
   contained = 0
   overlapped = 0
 
-for i, line in enumerate "input".lines:
+for line in "input".lines:
   limits = line.split({',', '-'}).mapIt(it.parseInt)
   if limits.isContained:
     inc contained
