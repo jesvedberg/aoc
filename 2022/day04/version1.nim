@@ -1,8 +1,5 @@
 import std/[enumerate, strutils, sequtils]
 
-proc getLimits(s: string): seq[int] =
-  return map(s.split({',', '-'}), proc(s: string): int = s.parseInt)
-
 proc isContained(limits: seq[int]): bool =
   result = false
   if limits[0] < limits[2]:
@@ -27,7 +24,7 @@ var
   overlapped = 0
 
 for i, line in enumerate "input".lines:
-  limits = getLimits(line)
+  limits = line.split({',', '-'}).mapIt(it.parseInt)
   if limits.isContained:
     inc contained
   if limits.isOverlapping:
