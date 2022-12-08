@@ -1,12 +1,13 @@
-import sets, sequtils, strutils
+import std/[sets, sequtils, strutils, monotimes]
 
 proc getDup(s: string): char =
   let
     lineMid = s.high div 2
-    p1 = s[0..lineMid].toHashSet
-    p2 = s[lineMid+1..^1].toHashSet
-  for item in p1 * p2:
-    return item
+    s1 = s[0..lineMid]
+    s2 = s[lineMid+1..^1]
+  for c in s1:
+    if c in s2:
+      return c
 
 proc getBadge(line, overlap: string): string =
   let
@@ -21,6 +22,7 @@ proc calcPrio(c: char): int =
   else:
     result = cnum - 64 + 26
 
+let start = getMonoTime()
 var
   prioSum = 0
   prioSum2 = 0
@@ -43,4 +45,4 @@ for line in "input".lines:
 
 echo prioSum
 echo prioSum2
-
+echo "Time: ",(getMonoTime()-start)
