@@ -28,19 +28,18 @@ var
   counter = 0
 
 for line in "input".lines:
-  if line != "":
-    prioSum += line.getDup.calcPrio
-    if last.len > 0:
-      last = getBadge(line, last)
-      if counter == 2:
-        prioSum2 += last[0].calcPrio
-        last = ""
-        counter = 0
-      else:
-        inc counter
+  prioSum += line.getDup.calcPrio
+  if last.len > 0:
+    last = getBadge(line, last)
+    if counter == 2:
+      prioSum2 += last[0].calcPrio
+      last = ""
+      counter = 0
     else:
-      last = line
       inc counter
+  else:
+    last = line
+    inc counter
 
 echo prioSum
 echo prioSum2
